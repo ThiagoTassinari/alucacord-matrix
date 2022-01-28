@@ -21,7 +21,7 @@ function Title(props) {
     )
 }
         
-export default function PaginaInicial() {
+export default function HomePage() {
     // const username = 'ThiagoTassinari';
     const [username, setUsername] = React.useState('ThiagoTassinari');
     const router = useRouter();
@@ -56,8 +56,7 @@ export default function PaginaInicial() {
               as="form"
               onSubmit={function (event) {
                 event.preventDefault();
-                console.log('Alguém submeteu o form!');
-                router.push('chat');
+                {username.length > 2 ? roteamento.push(`/chat?username=${username}`) : alert('Usuário não encontrado!')};
               }}
               styleSheet={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
@@ -83,13 +82,14 @@ export default function PaginaInicial() {
 
               <TextField
                 value={username}
-                onChange={function(event) {
-                    console.log('Usuario digitou', event.target.value);                
+                onChange={function Handler(event){
+                  console.log('Usuario digitou', event.target.value);                
                     // Onde ta o valor?
                     const valor = event.target.value;
                     // Trocar o valor da variável atráves do React e avise quem precisa
                     setUsername(valor);
                 }}
+                placeholder='Digite seu usuário do Github'
                 fullWidth
                 textFieldColors={{
                   neutral: {
@@ -136,7 +136,7 @@ export default function PaginaInicial() {
                   borderRadius: '50%',
                   marginBottom: '16px',
                 }}
-                src={`https://github.com/${username}.png`}
+                src={username.length > 2 ? `https://github.com/${username}.png` : 'https://i.ibb.co/Ch4m85T/erro.png'} 
               />
               <Text
                 variant="body4"
