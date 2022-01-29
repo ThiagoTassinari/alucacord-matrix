@@ -56,7 +56,7 @@ export default function HomePage() {
               as="form"
               onSubmit={function (event) {
                 event.preventDefault();
-                {username.length > 2 ? roteamento.push(`/chat?username=${username}`) : alert('Usuário não encontrado!')};
+                {username.length > 2 ? router.push(`/chat?username=${username}`) : alert('Usuário não encontrado!')};
               }}
               styleSheet={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
